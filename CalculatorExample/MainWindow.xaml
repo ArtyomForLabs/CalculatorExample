@@ -1,0 +1,72 @@
+﻿<Window x:Class="CalculatorExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalculatorExample"
+        mc:Ignorable="d"
+        Title="Calculator" Height="395" Width="513">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto" MinWidth="168"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="1"/>
+                <GradientStop Color="#FF98B342" Offset="0.893"/>
+                <GradientStop Color="#FF0F1206" Offset="0"/>
+                <GradientStop Color="#FF88A03B" Offset="0.103"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="Formula" Content="{Binding Formula, Mode=OneWay}" HorizontalAlignment="Left" Margin="27,35,0,0" VerticalAlignment="Top" Height="36" Width="178" Background="White" BorderBrush="Black" OpacityMask="Black" BorderThickness="1,1,1,1" FontSize="16"/>
+        <Button x:Name="buttonClearAll" Content="C" HorizontalAlignment="Left" Margin="40,85,0,0" VerticalAlignment="Top" Height="30" Width="30" Command="{Binding ClearAllCommand}"/>
+        <Button x:Name="buttonClearLast" Content="&lt;-" HorizontalAlignment="Left" Margin="94,85,0,0" VerticalAlignment="Top" Height="30" Width="30" Command="{Binding ClearLastCommand}"/>
+        <Grid x:Name="Numbers" Margin="27,130,0,34" Background="#FFBFD4A1" UseLayoutRounding="False" HorizontalAlignment="Left" Width="164">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="button7" Content="7" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="7" RenderTransformOrigin="0.5,0.5"/>
+            <Button x:Name="button8" Content="8" HorizontalAlignment="Center" VerticalAlignment="Center" Width="30" Height="30" Command="{Binding AddSymbolCommand}" CommandParameter="8" Grid.Column="1"/>
+            <Button x:Name="button9" Content="9" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="9" Grid.Column="2"/>
+            <Button x:Name="button4" Content="4" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="4" Grid.Row="1"/>
+            <Button x:Name="button5" Content="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="5" Grid.Column="1" Grid.Row="1"/>
+            <Button x:Name="button6" Content="6" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="6" Grid.Column="2" Grid.Row="1"/>
+            <Button x:Name="button1" Content="1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="1" Grid.Row="2"/>
+            <Button x:Name="button2" Content="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="2" Grid.Column="1" Grid.Row="2"/>
+            <Button x:Name="button3" Content="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="3" Grid.Column="2" Grid.Row="2"/>
+            <Button x:Name="button0" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="89" Command="{Binding AddSymbolCommand}" CommandParameter="0" Grid.Row="3" Grid.ColumnSpan="2"/>
+            <Button x:Name="buttonSeparator" Content="," HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="," Grid.Column="2" Grid.Row="3"/>
+        </Grid>
+        <Grid x:Name="Operations" Margin="210,130,0,34" Background="#FFBFD4A1" HorizontalAlignment="Left" Width="107">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonMultiply" Content="*" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="*"/>
+            <Button x:Name="buttonDivide" Content="/" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="/" Grid.Row="1"/>
+            <Button x:Name="buttonAdd" Content="+" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="+" Grid.Row="2"/>
+            <Button x:Name="buttonSubstract" Content="-" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding AddSymbolCommand}" CommandParameter="-" Grid.Row="3"/>
+            <Button x:Name="buttonEqual" Content="=" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="30" Command="{Binding CalculateCommand}" Grid.Row="4"/>
+            <ListBox x:Name="OperationExtensions" Grid.Column="1" Grid.RowSpan="5" Width="Auto" Background="#FFBFD4A1"/>
+        </Grid>
+        <TabControl x:Name="ExtensionsTab" Margin="10,0,0,0" Grid.Column="1" Height="310" VerticalAlignment="Center"/>
+
+
+    </Grid>
+</Window>
